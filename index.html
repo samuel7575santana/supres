@@ -64,7 +64,10 @@ body {
     <div id="carta"></div>
 </div>
 
-<audio id="musica" src="musica.mp3"></audio>
+<audio id="musica" preload="auto">
+    <source src="musica.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+</audio>
 
 <script>
 const texto = `Eu sei que você anda cansada…
@@ -102,7 +105,14 @@ let i = 0;
 function entrar() {
     document.querySelector(".tela-inicial").style.display = "none";
     document.querySelector(".conteudo").style.display = "block";
-    document.getElementById("musica").play();
+
+    const musica = document.getElementById("musica");
+    musica.volume = 0.4;
+
+    musica.play().catch(error => {
+        console.log("Erro ao tentar tocar música:", error);
+    });
+
     escrever();
 }
 
