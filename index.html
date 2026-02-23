@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Você ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    color: white;
+    text-align: center;
+    overflow: hidden;
+}
+
+.tela-inicial {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.tela-inicial h1 {
+    font-size: 2.5em;
+    animation: pulsar 2s infinite;
+}
+
+@keyframes pulsar {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+.conteudo {
+    display: none;
+    padding: 40px;
+    max-width: 800px;
+    margin: auto;
+}
+
+#carta {
+    white-space: pre-line;
+    font-size: 1.2em;
+    line-height: 1.6;
+    min-height: 300px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="tela-inicial" onclick="entrar()">
+    <h1>Clique para entrar ❤️</h1>
+</div>
+
+<div class="conteudo">
+    <h2>Para a mulher que mudou minha vida</h2>
+    <div id="carta"></div>
+</div>
+
+<audio id="musica" src="musica.mp3"></audio>
+
+<script>
+const texto = `Eu sei que você anda cansada…
+Mas você é muito mais forte do que imagina.
+
+Eu admiro sua inteligência.
+Admiro sua determinação.
+Admiro a forma como você pensa e enfrenta o mundo.
+
+E eu quero estar ao seu lado.
+Nos dias leves.
+Nos dias difíceis.
+
+Eu te amo muito ❤️
+E sempre vou amar.
+
+Quero viver muitas coisas com você…
+Lugares, comidas, fotos e momentos únicos.
+
+Mas acima de tudo, quero estar ao seu lado em cada momento.
+
+Peço desculpas se já te fiz se sentir insegura.
+Eu estou aprendendo. Estou crescendo.
+
+E eu vou conquistar muitas coisas por nós.
+Vou fazer você se sentir especial.
+Amada.
+Desejada.
+
+E prometo que ainda vou deixar você completamente louca…
+De amor por mim.`;
+
+let i = 0;
+
+function entrar() {
+    document.querySelector(".tela-inicial").style.display = "none";
+    document.querySelector(".conteudo").style.display = "block";
+    document.getElementById("musica").play();
+    escrever();
+}
+
+function escrever() {
+    if (i < texto.length) {
+        document.getElementById("carta").innerHTML += texto.charAt(i);
+        i++;
+        setTimeout(escrever, 40);
+    }
+}
+</script>
+
+</body>
+</html>
